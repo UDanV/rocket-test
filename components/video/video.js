@@ -42,14 +42,19 @@ export default class Video {
         <div class="video-modal__overlay"></div>
         <div class="video-modal__content">
             <button class="video-modal__close" aria-label="Закрыть">×</button>
-            <iframe width="700" height="405" 
-            src="https://rutube.ru/play/embed/39474b19943afa6a5505fd179d3d622d/" 
-            frameBorder="0" 
-            allow="clipboard-write; autoplay" 
-            webkitAllowFullScreen 
-            mozallowfullscreen 
-            allowFullScreen>
-            </iframe>
+            <div class="video-modal__iframe-container">       
+                <iframe
+                    class="video-modal__iframe"
+                    width="720"
+                    height="405"
+                    src="https://rutube.ru/play/embed/39474b19943afa6a5505fd179d3d622d"
+                    frameBorder="0"
+                    allow="clipboard-write; autoplay"
+                    webkitAllowFullScreen
+                    mozallowfullscreen
+                    allowFullScreen
+                ></iframe>
+            </div>
         </div>
     `;
 
