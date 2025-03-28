@@ -112,34 +112,64 @@ export class ModalForm {
         return isValid;
     }
 
-    submitForm() {
+    async submitForm() {
         const formData = {
             name: document.querySelector('.js-name-input').value.trim(),
             phone: document.querySelector('.js-phone-input').value,
             agree: document.querySelector('.js-agree-input').checked
         };
 
-        console.log('Форма отправлена:', formData);
-        alert('Спасибо! Ваша заявка принята.');
-        this.closeModal();
-        this.resetForm();
+        try {
+            document.querySelector('.js-submit-btn').disabled = true;
+            document.querySelector('.js-submit-btn').textContent = 'Отправка...';
+
+            const response = await fetch('/php/sendMail.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    name: formData.name,
+                    phone: formData.phone
+                })
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                alert(result.message || 'Спасибо! Ваша заявка принята.');
+                this.closeModal();
+                this.resetForm();
+            } else {
+                alert(result.message || 'Произошла ошибка при отправке формы.');
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+            alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже.');
+        } finally {
+            document.querySelector('.js-submit-btn').disabled = false;
+            document.querySelector('.js-submit-btn').textContent = 'Отправить заявку';
+        }
     }
 
-    openModal() {
+    openModal()
+    {
         document.querySelector('.js-modal-overlay').style.display = 'flex';
         setTimeout(() => {
             document.querySelector('.js-modal-overlay').classList.add('active');
         }, 10);
     }
 
-    closeModal() {
+    closeModal()
+    {
         document.querySelector('.js-modal-overlay').classList.remove('active');
         setTimeout(() => {
             document.querySelector('.js-modal-overlay').style.display = 'none';
         }, 300);
     }
 
-    resetForm() {
+    resetForm()
+    {
         document.querySelector('.js-order-form').reset();
         this.phoneMask.updateValue();
         document.querySelector('.js-submit-btn').disabled = true;

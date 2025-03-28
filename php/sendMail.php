@@ -2,13 +2,12 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require '/home/ipool/vendor/phpmailer/phpmailer/src/Exception.php';
-require '/home/ipool/vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require __DIR__ . '/../vendor/phpmailer/phpmailer/src/Exception.php';
+require __DIR__ . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-require '/home/ipool/vendor/autoload.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars(trim($_POST['name']));
@@ -33,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->addAddress('danil17092006@gmail.com', 'Recipient Name');
 
         $mail->isHTML(true);
-        $mail->Subject = 'Данные отправлены с сайта тестового задания.';
+        $mail->Subject = 'Data sended by UDanV (test exercise).';
         $mail->Body    = "Имя: $name<br>Телефон: $phone";
 
         $mail->send();
