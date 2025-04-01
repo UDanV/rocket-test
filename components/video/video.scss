@@ -53,6 +53,7 @@
     @media (max-width: 576px) {
       max-height: 33px;
       max-width: 193px;
+      padding: 5px;
     }
   }
 
@@ -115,7 +116,7 @@
 
   &__iframe-container {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 соотношение */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
   }

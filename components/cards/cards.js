@@ -43,13 +43,17 @@ export default class Cards {
         this.container.innerHTML = `
       <div class="cards">
         <div class="cards__wrapper">
-          <div class="cards__wrapper--long">
+          <div class="cards__wrapper--long">    
             <div class="cards__wrapper--name">
                 <p class="cards__wrapper--label">Горох в стручках, 1 кг</p>
                 <div class="cards__wrapper--rate">
                     <img src="/assets/rate.svg" alt="">
                     <img src="/assets/watch.svg" alt="">
                 </div>
+            </div>
+            <div class="cards__wrapper--mobileBadges">
+                <p class="cards__sale">- 29%</p>
+                <p class="cards__label">Товар дня</p>
             </div>
             <div class="cards__wrapper--actions">
                 <div class="cards__wrapper--badges">
@@ -71,6 +75,10 @@ export default class Cards {
                         <img src="/assets/watch.svg" alt="">
                     </div>
                 </div>
+                <div class="cards__wrapper--mobileBadges">
+                    <p class="cards__sale" data-bg="pink">- 31%</p>
+                    <p class="cards__label" data-bg="blue">Распродажа</p>
+                </div>
                 <div class="cards__wrapper--actions">
                     <div class="cards__wrapper--badges">
                         <p class="cards__sale" data-bg="pink">- 31%</p>
@@ -89,6 +97,9 @@ export default class Cards {
                         <img src="/assets/rate.svg" alt="">
                         <img src="/assets/watch.svg" alt="">
                     </div>
+                </div>
+                <div class="cards__wrapper--mobileBadges">
+                    <p class="cards__label" data-bg="violet">Хит</p>
                 </div>
                 <div class="cards__wrapper--actions">
                     <div class="cards__wrapper--badges">
