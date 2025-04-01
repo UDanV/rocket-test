@@ -23,13 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host = 'smtp.mail.ru';
         $mail->SMTPAuth = true;
-        $mail->Username = 'danil.vasin-06@mail.ru';
-        $mail->Password = 'iuVzXydJED8wugrpfEpc';
+        $mail->Username = 'SENDERMAIL';
+        $mail->Password = 'PASSSENDER';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
-        $mail->setFrom('danil.vasin-06@mail.ru', 'UDanV');
-        $mail->addAddress('danil17092006@gmail.com', 'Recipient Name');
+        $mail->setFrom('SENDERMAIL', 'NAME');
+        $mail->addAddress('RECIPIENTMAIL', 'NAME');
 
         $mail->isHTML(true);
         $mail->Subject = 'Data sended by UDanV (test exercise).';
